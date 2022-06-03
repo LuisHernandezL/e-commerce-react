@@ -1,0 +1,40 @@
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.search-box{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.products-container{
+    margin-top: 10px;
+}
+
+.product-wrapper{
+    border: 2px solid lightblue;
+    margin-top: 20px;
+    padding: 20px 10px;
+    width: 100%;
+}
+.product-image{
+    align-items: center;
+    border-bottom: 1px solid lightcoral;
+    display: flex;
+    height: 250px;
+    justify-content:center;
+    position: relative;
+}
+
+.product-image img{
+    display: block;
+    height: 80%;
+    margin: 0 auto;
+    object-fit: contain;
+    width: 80%;
+}
