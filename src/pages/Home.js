@@ -40,12 +40,6 @@ const Home = () => {
         navigate(`/product/${id}`)
     }
     
-
-    
-
-    
-
-
     return (
         <div className='products-container'>
             <div className='search-box'>

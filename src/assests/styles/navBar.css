@@ -1,0 +1,19 @@
+.nav-container {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between; 
+}
+
+.list-navbar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.list-navbar li {
+    margin-right: 10px;
+    
+}
