@@ -1,9 +1,12 @@
+import '../assests/styles/productDetail.css'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { filterProducts, getProducts } from '../store/slices/products.slices';
+import { getProducts } from '../store/slices/products.slices';
+import ProductCard from '../componentes/ProductCard';
 
 const ProductDetails = () => {
+
     const [product,setProduct]=useState();
     const [ productsFiltered, setProductsFiltered ] = useState([]);
     
@@ -29,9 +32,8 @@ const ProductDetails = () => {
         
     }, [ id, dispatch, productsList ]);
 
+    console.log(productsFiltered);
 
-   
-    
     return (
         <div className='product-detail-container'>
             <div className='product-data'>
@@ -64,6 +66,7 @@ const ProductDetails = () => {
                     productsFiltered.map(product => (
                         <div className='product-wrapper'>
                             <ProductCard product={product}/>
+                            
                         </div>
                     ))
                 }
