@@ -38,9 +38,9 @@ const ProductDetails = () => {
         <div className='product-detail-container'>
             <div className='product-data'>
                 <div className='image-options'>
-                    <div className='button-container'><button>atras</button></div>
+                    <div className='button-container'><button><i class="fa-solid fa-angle-left"></i></button></div>
                     <img src={product?.productImgs[0]} alt="" />
-                    <div className='button-container'><button>delante</button></div>
+                    <div className='button-container'><button><i class="fa-solid fa-angle-right"></i></button></div>
                 </div>
                 <div className='image-subOptions'>
                     <img src={product?.productImgs[0]} alt="" />
@@ -51,14 +51,23 @@ const ProductDetails = () => {
             <div className='product-options'>
                 <h2>{product?.title}</h2>
                 <p>{product?.description}</p>
-                <p>price: {product?.price}</p>
-                <div>
-                    <p>quantity</p>
-                    <button>+</button>
-                    <span>1</span>
-                    <button>-</button>
+                <div className='options-subdata'>
+                    <div className='options-subdata-1'>
+                        <p> <span>price:</span> <b>{product?.price}</b></p>
+                    </div>
+                    <div className='options-subdata-2'>
+                        <p>quantity</p>
+                        <div>
+                        <button>+</button>
+                        <span>1</span>
+                        <button>-</button>
+                        </div>
+                    </div>
                 </div>
-                <button>Add Product</button>
+                
+                <button className='add-product-button'>Add Product</button>
+                
+                
             </div>
             <h3>Discover similar items</h3>
             <div className='suggestions'>
