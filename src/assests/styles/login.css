@@ -1,15 +1,16 @@
 .login-wrapper{
     height: 80vh;
-    background: rgba(240, 235, 235, 0.644);
+    background: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .login-container{
-    border: 2px solid lightgray;
+    border-radius: 12px;
+    border: 2px solid #0089BA;
     width: 95%;
-    height: 35vh;
+    height: 60vh;
     text-align: center;
     padding: 30px 0;
 }
@@ -19,10 +20,13 @@
 }
 
 .testData-container{
-    border: 2px solid orange;
+    background-color: #0088babb;
     width: 50%;
     margin: 20px auto;
+    border-radius: 12px;
+    padding: 10px;
 }
+
 
 .form-container{
     display: flex;
@@ -30,10 +34,4 @@
     padding: 0 50px;
     text-align: start;
     gap: 5px;
-}
-
-.form-container button{
-    width: 50%;
-    margin: 15px auto;
-    height: 25px;
 }

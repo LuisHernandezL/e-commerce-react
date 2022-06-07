@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assests/styles/navBar.css'
-
+import logo from '../assests/images/logo.png'
 const Navbar = () => {
 
     const navigate = useNavigate()
@@ -12,7 +12,9 @@ const Navbar = () => {
 
     return (
         <header className='nav-container'>
-            <h5 onClick={toHome}>E-COMMERCE</h5>
+            <div className='logo'>
+                <img src={logo} alt="logo" onClick={toHome}/>
+            </div>
             
             <ul className='list-navbar'>
                 <li onClick={toLogin}><i className="fa-solid fa-user"></i></li>

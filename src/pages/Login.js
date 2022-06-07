@@ -33,8 +33,8 @@ const Login = () => {
                 <div className='testData-container'>
                     <h4>Test data</h4>
                     <div>
-                        <p>mason@gmail.com</p>
-                        <p>mason1234</p>
+                        <p><b>User:</b> mason@gmail.com</p>
+                        <p><b>Password:</b> mason1234</p>
                     </div>
                 </div>
                 <form onSubmit={handleSubmit(submit)} className='form-container'>
@@ -44,7 +44,7 @@ const Login = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password"  id='password' {...register("password")} />
 
-                    <button>Login</button>
+                    <button className='btn btn-success'>Login</button>
                 </form>
     
             </div>

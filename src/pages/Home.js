@@ -41,26 +41,29 @@ const Home = () => {
     }
     
     return (
-        <div className='products-container'>
-            <div className='search-box'>
+        <div className='products-container '>
+            <div className='input-group mb-3'>
                 <input 
                     type="text" 
                     id='search-bar'
                     onChange={e=>setSearch(e.target.value)}
                     value={search}
+                    className='form-control'
                 />
                 <button 
                     id='search-bar'
                     onClick={getFilterProducts}
+                    className=' btn btn-outline-info'
                 >
                     Search
                 </button>
             </div>
             <div className='categories-container'>
-                <ul className='categories-wrapper'>
+                
+                <ul className='list-group list-group-horizontal-sm'>
                     {
                         categories.map(category=>(
-                            <li key={category.id} onClick={()=>categoryFilter(category.id)}>{category.name}</li>
+                            <li key={category.id} onClick={()=>categoryFilter(category.id)} className="list-group-item">{category.name}</li>
                         ))
                     }
                 </ul>
@@ -80,9 +83,9 @@ const Home = () => {
                                     <h3>{product.title}</h3>
                                     <div>
                                         Price:
-                                        <p>$ {product.price}</p>
+                                        <p><b>$ {product.price}</b></p>
                                     </div>
-                                    <button>
+                                    <button className='btn btn-primary'>
                                         Buy
                                     </button>
 
