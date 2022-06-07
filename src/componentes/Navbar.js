@@ -15,9 +15,9 @@ const Navbar = () => {
             <h5 onClick={toHome}>E-COMMERCE</h5>
             
             <ul className='list-navbar'>
-                <li onClick={toLogin}><i class="fa-solid fa-user"></i></li>
-                <li onClick={toPurchases}><i class="fa-solid fa-shop"></i></li>
-                <li><i class="fa-solid fa-cart-shopping"></i></li>
+                <li onClick={toLogin}><i className="fa-solid fa-user"></i></li>
+                <li onClick={toPurchases}><i className="fa-solid fa-shop"></i></li>
+                <li><i className="fa-solid fa-cart-shopping"></i></li>
             </ul>
             
         </header>

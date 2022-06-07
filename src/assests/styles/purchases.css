@@ -1,0 +1,11 @@
+.purchases-wrapper{
+    height: auto;
+    background: rgba(240, 235, 235, 0.644);
+    display: flex;
+    justify-content: center;
+    
+}
+
+.purchases-container{
+    border: 2px solid lightgray;
+}

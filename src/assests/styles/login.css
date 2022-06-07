@@ -1,0 +1,39 @@
+.login-wrapper{
+    height: 80vh;
+    background: rgba(240, 235, 235, 0.644);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    border: 2px solid lightgray;
+    width: 95%;
+    height: 35vh;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.login-container h3{
+    font-size: medium;
+}
+
+.testData-container{
+    border: 2px solid orange;
+    width: 50%;
+    margin: 20px auto;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    text-align: start;
+    gap: 5px;
+}
+
+.form-container button{
+    width: 50%;
+    margin: 15px auto;
+    height: 25px;
+}
