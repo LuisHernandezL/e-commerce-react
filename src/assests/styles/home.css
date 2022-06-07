@@ -37,4 +37,5 @@ ul{
     margin: 0 auto;
     object-fit: contain;
     width: 80%;
+    background-color: red;
 }
