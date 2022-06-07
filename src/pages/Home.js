@@ -38,11 +38,6 @@ const Home = () => {
     }
     
 
-    
-
-    
-
-
     return (
         <div className='products-container'>
             <div className='search-box'>
