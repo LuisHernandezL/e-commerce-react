@@ -10,9 +10,12 @@ const baseUrl = 'https://ecommerce-api-react.herokuapp.com/api/v1';
 const Home = () => {
     
     const [search,setSearch]=useState('');
+
     const products = useSelector(state=>state.products);
     const dispatch = useDispatch();
+
     const [categories,setCategories]=useState([]);
+    
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -37,7 +40,6 @@ const Home = () => {
         navigate(`/product/${id}`)
     }
     
-
     return (
         <div className='products-container'>
             <div className='search-box'>

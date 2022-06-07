@@ -33,8 +33,42 @@ const ProductDetails = () => {
    
     
     return (
-        <div>
-            <h1>Product Details</h1>
+        <div className='product-detail-container'>
+            <div className='product-data'>
+                <div className='image-options'>
+                    <div className='button-container'><button>atras</button></div>
+                    <img src={product?.productImgs[0]} alt="" />
+                    <div className='button-container'><button>delante</button></div>
+                </div>
+                <div className='image-subOptions'>
+                    <img src={product?.productImgs[0]} alt="" />
+                    <img src={product?.productImgs[1]} alt="" />
+                    <img src={product?.productImgs[2]} alt="" />
+                </div>
+            </div>
+            <div className='product-options'>
+                <h2>{product?.title}</h2>
+                <p>{product?.description}</p>
+                <p>price: {product?.price}</p>
+                <div>
+                    <p>quantity</p>
+                    <button>+</button>
+                    <span>1</span>
+                    <button>-</button>
+                </div>
+                <button>Add Product</button>
+            </div>
+            <h3>Discover similar items</h3>
+            <div className='suggestions'>
+                {
+                    productsFiltered.map(product => (
+                        <div className='product-wrapper'>
+                            <ProductCard product={product}/>
+                        </div>
+                    ))
+                }
+
+            </div>
         </div>
     );
 };
