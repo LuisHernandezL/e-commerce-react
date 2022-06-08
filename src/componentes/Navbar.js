@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assests/styles/navBar.css'
 import logo from '../assests/images/logo.png'
+import { getCart } from '../store/slices/cart.slices';
+import { useDispatch } from 'react-redux';
 const Navbar = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const toPurchases = () => navigate("/purchases")
-    const toLogin = () => navigate("/login")
-    const toHome = () => navigate("/")
+    const toPurchases = () => navigate("/purchases");
+    const toLogin = () => navigate("/login");
+    const toHome = () => navigate("/");
+
+    useEffect(()=>{
+        dispatch(getCart())
+    },[dispatch]);
 
     return (
         <header className='nav-container'>

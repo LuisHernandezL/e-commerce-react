@@ -20,7 +20,7 @@ const Home = () => {
 
     useEffect(()=>{
         dispatch(getProducts())
-    },[]);
+    },[dispatch]);
 
     const getFilterProducts =() =>{
         dispatch(filterProducts(search))
@@ -72,9 +72,9 @@ const Home = () => {
             <ul>
                 {
                     products.map(product=>(
-                        <li key={product.id} className='product-wrapper' onClick={()=>goDetail(product.id)}>
+                        <li key={product.id} className='product-wrapper'>
                             <div className='product-container'>
-                                <div className='product-image'>
+                                <div className='product-image' onClick={()=>goDetail(product.id)}>
                                     <img src={product.productImgs[0]} alt="" />
                                 </div>
                                 

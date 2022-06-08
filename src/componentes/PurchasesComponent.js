@@ -1,10 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PurchasesComponent = ({purchases}) => {
-    console.log(purchases);
+    
 
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(purchases.createdAt).toLocaleDateString('en-us', options);
+    const navigate=useNavigate();
+
+    
     
 
     return (
@@ -12,11 +16,17 @@ const PurchasesComponent = ({purchases}) => {
             
             <div>
                 <h4>{date}</h4>
-                <ul>
-                    <li>{purchases.cart.products[0]?.title}</li>
-                    <li>$ {purchases.cart.products[0]?.price}</li>
-                    <li>Items: {purchases.cart.products[0]?.productsInCart.quantity}</li>
-                </ul>
+                <div className='purchase-container'>
+                    {
+                        purchases.cart.products.map(product=>(
+                            <ul onClick={()=>navigate(`/product/${product.id}`)} key={product.id}>
+                                <li>{product.title}</li>
+                                <li>$ {product.price}</li>
+                                <li>Items: {product.productsInCart.quantity}</li>
+                            </ul>
+                        ))
+                    }
+                </div>
 
             </div>
         </div>
