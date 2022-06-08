@@ -13,11 +13,12 @@ const Purchases = () => {
 
     useEffect(()=>{
         dispatch(getPurchases())
-    },[])
+    },[dispatch])
 
     return (
         <div>
             <h1>Purchases</h1>
+
             <div className='purchases-wrapper'>
                 <div className='purchases-container'>
                 {

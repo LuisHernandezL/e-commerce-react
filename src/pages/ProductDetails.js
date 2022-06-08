@@ -4,20 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProducts } from '../store/slices/products.slices';
 import ProductCard from '../componentes/ProductCard';
+import { Carousel } from 'react-bootstrap';
 
 const ProductDetails = () => {
 
-    const [product,setProduct]=useState();
-    const [ productsFiltered, setProductsFiltered ] = useState([]);
-    
-    const {id}=useParams();
+    const [product, setProduct] = useState();
+    const [productsFiltered, setProductsFiltered] = useState([]);
+
+    const { id } = useParams();
     const dispatch = useDispatch();
-    const productsList = useSelector(state=>state.products);
-    
-    useEffect(() => {dispatch(getProducts())}, [ dispatch ]);
+    const productsList = useSelector(state => state.products);
+
+    useEffect(() => { dispatch(getProducts()) }, [dispatch]);
 
     useEffect(() => {
-        
+
         const productFind = productsList.find(
             productItem => productItem.id === +id
         );
@@ -29,14 +30,14 @@ const ProductDetails = () => {
         setProductsFiltered(filtered);
 
         setProduct(productFind);
-        
-    }, [ id, dispatch, productsList ]);
 
-    console.log(productsFiltered);
+    }, [id, dispatch, productsList]);
+
+    
 
     return (
         <div className='product-detail-container'>
-            <div className='product-data'>
+            {/* <div className='product-data'>
                 <div className='image-options'>
                     <div className='button-container'><button><i class="fa-solid fa-angle-left"></i></button></div>
                     <img src={product?.productImgs[0]} alt="" />
@@ -47,35 +48,73 @@ const ProductDetails = () => {
                     <img src={product?.productImgs[1]} alt="" />
                     <img src={product?.productImgs[2]} alt="" />
                 </div>
-            </div>
+            </div>  */}
+            <Carousel style={{maxWidth:'500px'}} className='mx-auto'>
+                <Carousel.Item >
+                    <img
+                        style={{minWidth: "200px",
+                            maxWidth: "274px",
+                            height:"350px"}}
+                        className="d-block w-100"
+                        src={product?.productImgs[0]}
+                        alt="First slide"
+                    />
+                    
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        style={{minWidth: "200px",
+                        maxWidth: "274px",
+                        height:"350px"}}
+                        className="d-block w-100"
+                        src={product?.productImgs[1]}
+                        alt="Second slide"
+                    />
+
+                    
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        style={{minWidth: "200px",
+                        maxWidth: "300px",
+                        height:"350px"}}
+                        className="d-block w-100"
+                        src={product?.productImgs[2]}
+                        alt="Third slide"
+                    />
+
+        
+                </Carousel.Item>
+            </Carousel>
+
             <div className='product-options'>
                 <h2>{product?.title}</h2>
                 <p>{product?.description}</p>
                 <div className='options-subdata'>
                     <div className='options-subdata-1'>
-                        <p> <span>price:</span> <b>{product?.price}</b></p>
+                        <p> <span>Price:</span><b> ${product?.price}</b></p>
                     </div>
                     <div className='options-subdata-2'>
-                        <p>quantity</p>
+                        <p>Quantity</p>
                         <div>
-                        <button>+</button>
-                        <span>1</span>
-                        <button>-</button>
+                            <button>+</button>
+                            <span>1</span>
+                            <button>-</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <button className='add-product-button'>Add Product</button>
-                
-                
+
+
             </div>
             <h3>Discover similar items</h3>
             <div className='suggestions'>
                 {
                     productsFiltered.map(product => (
-                        <div className='product-wrapper'>
-                            <ProductCard product={product}/>
-                            
+                        <div className='product-wrapper' key={product.id}>
+                            <ProductCard product={product} />
+
                         </div>
                     ))
                 }

@@ -2,8 +2,8 @@
     background-color: #0081CF;
     display: flex;
     height: 80px;
-    width: 100%;
     justify-content: space-between; 
+    
 }
 
 .list-navbar {

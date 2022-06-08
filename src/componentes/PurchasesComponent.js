@@ -15,14 +15,17 @@ const PurchasesComponent = ({purchases}) => {
         <div>
             
             <div>
-                <h4>{date}</h4>
+                
                 <div className='purchase-container'>
+                    <li className='list-group-item active title'>{date}</li>
                     {
                         purchases.cart.products.map(product=>(
-                            <ul onClick={()=>navigate(`/product/${product.id}`)} key={product.id}>
-                                <li>{product.title}</li>
-                                <li>$ {product.price}</li>
-                                <li>Items: {product.productsInCart.quantity}</li>
+                            
+                            <ul onClick={()=>navigate(`/product/${product.id}`)} key={product.id} className='list-group'>
+                                
+                                <li className='list-group-item'>{product.title}</li>
+                                <li className='list-group-item'>$ {product.price}</li>
+                                <li className='list-group-item'>Items: {product.productsInCart.quantity}</li>
                             </ul>
                         ))
                     }

@@ -15,7 +15,8 @@ const Login = () => {
         axios.post(baseUrl+'/users/login',data)
         .then(res=>{
             localStorage.setItem('token',res.data.data.token);
-            navigate('/');
+            localStorage.setItem('userName',res.data.data.user.firstName +" "+ res.data.data.user.lastName)
+            navigate('/user');
             alert("Welcome!");
         })
         .catch(error=>{
@@ -25,6 +26,7 @@ const Login = () => {
         })
         
     };
+    
 
     return (
         <div className='login-wrapper'>

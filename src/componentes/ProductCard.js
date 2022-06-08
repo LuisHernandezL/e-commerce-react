@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductCard = ({product}) => {
-    console.log(product);
+    
     return (
         <div className='product-container'>
             <div className='product-image'>
@@ -10,7 +10,7 @@ const ProductCard = ({product}) => {
             <div>
                 <h2>{product?.title}</h2>
                 <p>{product?.price}</p>
-                <button>add</button>
+                <button className='btn btn-primary'>add</button>
             </div>   
         </div>
     );
