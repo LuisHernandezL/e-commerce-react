@@ -64,7 +64,7 @@
 }
 
 .product-options p {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 
@@ -78,7 +78,7 @@
 }
 
 .options-subdata-1 p span{
-    color: gray
+    color: gray;
 }
 
 .options-subdata-2 span {
@@ -94,15 +94,15 @@
     justify-content: space-around;
 }
 
-
-.add-product-button {
-    
-    cursor: pointer;
-    background-color: #0081cf;
-    border: 1px solid #2c73d2;
-    height: 45px;
-    width: 95%;
+.input-container input {
+    width: 50px;
+    border: 1px solid lightgray;
+    height: 30px;
+    text-align: center;
 }
+
+
+
 
 @media (min-width: 700px) { 
 

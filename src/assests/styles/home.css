@@ -5,7 +5,11 @@ ul{
     margin-top: 30px;
 }
 
-
+.categories-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .products-container{
     margin-top: 10px;

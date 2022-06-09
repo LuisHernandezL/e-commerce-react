@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import userImage from '../assests/images/user-image.png'
+
 
 const UserInfo = () => {
     
@@ -12,14 +14,20 @@ const UserInfo = () => {
     }
 
     return (
-        <div className="login-container">
-            <div className="main-container">
-                <div className="login user-info">
-                    <img src="" alt="" className="user-avatar" />
-                    <b>{localStorage.getItem("userName")}</b>
-                    <button onClick={logout}>
-                        Log out
-                    </button>
+        <div className='login-wrapper'>
+            <div className="login-container">
+                <div className="login-user-info">
+                    <div className='image-container'>
+                        <img src={userImage} alt="" className="user-avatar" />
+                    </div>
+                    <div>
+                        <b>{localStorage.getItem("userName")}</b>
+                    </div>
+                    <div>
+                        <button className='btn btn-danger' onClick={logout}>
+                            Log out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

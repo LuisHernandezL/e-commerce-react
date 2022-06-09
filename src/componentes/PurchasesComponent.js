@@ -1,24 +1,23 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Accordion } from 'react-bootstrap';
 
-const PurchasesComponent = ({purchases}) => {
-    
+const PurchasesComponent = ({ purchases }) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const date = new Date(purchases.createdAt).toLocaleDateString(
+    "en-us",
+    options
+  );
+  const navigate = useNavigate();
 
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const date = new Date(purchases.createdAt).toLocaleDateString('en-us', options);
-    const navigate=useNavigate();
-
-    
-    
-
-    return (
-        <div>
-            
-            <div>
-                
-                <div className='purchase-container'>
-                    <li className='list-group-item active title'>{date}</li>
-                    {
+  return (
+    <div>
+      <div>
+        <Accordion defaultActiveKey="1">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header><li className='list-group-item active title'>{date}</li></Accordion.Header>
+            <Accordion.Body>
+            {
                         purchases.cart.products.map(product=>(
                             
                             <ul onClick={()=>navigate(`/product/${product.id}`)} key={product.id} className='list-group'>
@@ -29,11 +28,13 @@ const PurchasesComponent = ({purchases}) => {
                             </ul>
                         ))
                     }
-                </div>
-
-            </div>
-        </div>
-    );
+              
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+    </div>
+  );
 };
 
 export default PurchasesComponent;

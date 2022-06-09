@@ -21,6 +21,7 @@ export const getCart = () => (dispatch) => {
     return axios.get(baseUrl+'/cart',getConfig())
         .then(res => dispatch(setCart(res.data.data.cart.products)))
         /* .finally(() => dispatch(setIsLoading(false))); */
+        .catch(error => console.log(error.response))
 }
 
 export const addToCart = (addCart) => (dispatch) => {
@@ -28,7 +29,7 @@ export const addToCart = (addCart) => (dispatch) => {
     return axios.post(baseUrl+'/cart',addCart,getConfig())
         .then(() => {
             dispatch(getCart());
-            alert("Se Anadio un producto")
+            alert("Se Añadio un producto")
         })
         .catch(error=>console.log(error.response))
         /* .finally(() => dispatch(setIsLoading(false))); */

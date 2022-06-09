@@ -1,103 +1,119 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProducts,filterProducts,filterCategory } from '../store/slices/products.slices';
-import '../assests/styles/home.css'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, filterProducts, filterCategory } from "../store/slices/products.slices";
+import "../assests/styles/home.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Accordion } from 'react-bootstrap';
+import { addToCart } from '../store/slices/cart.slices';
 
-const baseUrl = 'https://ecommerce-api-react.herokuapp.com/api/v1';
+const baseUrl = "https://ecommerce-api-react.herokuapp.com/api/v1";
 
 const Home = () => {
-    
-    const [search,setSearch]=useState('');
+  const [search, setSearch] = useState("");
 
-    const products = useSelector(state=>state.products);
-    const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-    const [categories,setCategories]=useState([]);
-    
-    const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
 
-    useEffect(()=>{
-        dispatch(getProducts())
-    },[dispatch]);
+  const navigate = useNavigate();
 
-    const getFilterProducts =() =>{
-        dispatch(filterProducts(search))
-    };
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
 
-    useEffect(()=>{
-        axios.get(baseUrl+'/products/categories')
-        .then(res=>setCategories(res.data.data.categories))
+  const getFilterProducts = () => {
+    dispatch(filterProducts(search));
+  };
 
-    },[]);
+  useEffect(() => {
+    axios
+      .get(baseUrl + "/products/categories")
+      .then((res) => setCategories(res.data.data.categories));
+  }, []);
 
-    const categoryFilter = (id)=>{
-        dispatch(filterCategory(id));
-    };
+  const categoryFilter = (id) => {
+    dispatch(filterCategory(id));
+  };
 
-    const goDetail = (id)=>{
-        navigate(`/product/${id}`)
+  const goDetail = (id) => {
+    navigate(`/product/${id}`);
+  };
+
+  const addCart = (id)=>{
+    const productToAdd={
+        id:id,
+        quantity:1
     }
-    
-    return (
-        <div className='products-container '>
-            <div className='input-group mb-3'>
-                <input 
-                    type="text" 
-                    id='search-bar'
-                    onChange={e=>setSearch(e.target.value)}
-                    value={search}
-                    className='form-control'
-                />
-                <button 
-                    id='search-bar'
-                    onClick={getFilterProducts}
-                    className=' btn btn-outline-info'
-                >
-                    Search
-                </button>
-            </div>
-            <div className='categories-container'>
+    dispatch(addToCart(productToAdd));
+}
+
+  return (
+    <div className="products-container ">
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          id="search-bar"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+          className="form-control"
+          placeholder="Search"
+        />
+        <button
+          id="search-bar"
+          onClick={getFilterProducts}
+          className=" btn btn-outline-info"
+        >
+          Search
+        </button>
+      </div>
+      <div className="categories-container">
+        
+        <Accordion defaultActiveKey="1" style={{width: "fit-content"}}>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header> <i className="fa-solid fa-filter"></i></Accordion.Header>
+            <Accordion.Body>
+                {categories.map((category) => (
+                <div
+                key={category.id}
+                onClick={() => categoryFilter(category.id)}
                 
-                <ul className='list-group list-group-horizontal-sm'>
-                    {
-                        categories.map(category=>(
-                            <li key={category.id} onClick={()=>categoryFilter(category.id)} className="list-group-item">{category.name}</li>
-                        ))
-                    }
-                </ul>
+                >
+                {category.name}
+                </div>
+            ))}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id} className="product-wrapper">
+            <div className="product-container">
+              <div
+                className="product-image"
+                onClick={() => goDetail(product.id)}
+              >
+                <img src={product.productImgs[0]} alt="" />
+              </div>
 
+              <div className="product-info">
+                <h3>{product.title}</h3>
+                <div>
+                  Price:
+                  <p>
+                    <b>$ {product.price}</b>
+                  </p>
+                </div>
+                <button className="btn btn-primary" onClick={() => addCart(product.id)}>Buy</button>
+              </div>
             </div>
-            <ul>
-                {
-                    products.map(product=>(
-                        <li key={product.id} className='product-wrapper'>
-                            <div className='product-container'>
-                                <div className='product-image' onClick={()=>goDetail(product.id)}>
-                                    <img src={product.productImgs[0]} alt="" />
-                                </div>
-                                
-
-                                <div className='product-info'>
-                                    <h3>{product.title}</h3>
-                                    <div>
-                                        Price:
-                                        <p><b>$ {product.price}</b></p>
-                                    </div>
-                                    <button className='btn btn-primary'>
-                                        Buy
-                                    </button>
-
-                                </div>
-
-                            </div>
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
-    );
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Home;

@@ -13,6 +13,13 @@ const ProductDetails = () => {
     const [productsFiltered, setProductsFiltered] = useState([]);
     const[cart,setCart]=useState("")
 
+    const sumCart = () => setCart(cart + 1);
+    const resCart = () => {
+        if(cart > 0 ) {
+            setCart(cart - 1)
+        }
+    }
+
     const { id } = useParams();
     const dispatch = useDispatch();
     const productsList = useSelector(state => state.products);
@@ -48,18 +55,6 @@ const ProductDetails = () => {
 
     return (
         <div className='product-detail-container'>
-            {/* <div className='product-data'>
-                <div className='image-options'>
-                    <div className='button-container'><button><i class="fa-solid fa-angle-left"></i></button></div>
-                    <img src={product?.productImgs[0]} alt="" />
-                    <div className='button-container'><button><i class="fa-solid fa-angle-right"></i></button></div>
-                </div>
-                <div className='image-subOptions'>
-                    <img src={product?.productImgs[0]} alt="" />
-                    <img src={product?.productImgs[1]} alt="" />
-                    <img src={product?.productImgs[2]} alt="" />
-                </div>
-            </div>  */}
             <Carousel style={{maxWidth:'500px'}} className='mx-auto'>
                 <Carousel.Item >
                     <img
@@ -106,14 +101,16 @@ const ProductDetails = () => {
                         <p> <span>Price:</span><b> ${product?.price}</b></p>
                     </div>
                     <div className='options-subdata-2'>
-                        <p>Quantity</p>
-                        <div>
-                            <input type="number" onChange={e=>setCart(e.target.value)} value={cart}/>
+                        <p><b>Quantity</b></p>
+                        <div className='input-container'>
+                            <button onClick={sumCart}>+</button>
+                                <input type="text" onChange={e=>setCart(e.target.value)} value={cart}/>
+                            <button onClick={resCart}>-</button>
                         </div>
                     </div>
                 </div>
 
-                <button className='add-product-button' onClick={addCart}>Add Product</button>
+                <button className='btn btn-primary' style={{width: "100%"}} onClick={addCart}>Add Product</button>
 
 
             </div>
