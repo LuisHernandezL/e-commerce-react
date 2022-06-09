@@ -5,15 +5,18 @@ import { useParams } from 'react-router-dom';
 import { getProducts } from '../store/slices/products.slices';
 import ProductCard from '../componentes/ProductCard';
 import { Carousel } from 'react-bootstrap';
+import { addToCart } from '../store/slices/cart.slices';
 
 const ProductDetails = () => {
 
     const [product, setProduct] = useState();
     const [productsFiltered, setProductsFiltered] = useState([]);
+    const[cart,setCart]=useState("")
 
     const { id } = useParams();
     const dispatch = useDispatch();
     const productsList = useSelector(state => state.products);
+    
 
     useEffect(() => { dispatch(getProducts()) }, [dispatch]);
 
@@ -24,7 +27,7 @@ const ProductDetails = () => {
         );
 
         const filtered = productsList.filter(
-            productItem => productItem.category.id === productFind.category.id
+            productItem => productItem?.category.id === productFind?.category.id
         );
 
         setProductsFiltered(filtered);
@@ -32,6 +35,14 @@ const ProductDetails = () => {
         setProduct(productFind);
 
     }, [id, dispatch, productsList]);
+
+    const addCart = ()=>{
+        const productToAdd={
+            id:id,
+            quantity:cart
+        }
+        dispatch(addToCart(productToAdd));
+    }
 
     
 
@@ -97,14 +108,12 @@ const ProductDetails = () => {
                     <div className='options-subdata-2'>
                         <p>Quantity</p>
                         <div>
-                            <button>+</button>
-                            <span>1</span>
-                            <button>-</button>
+                            <input type="number" onChange={e=>setCart(e.target.value)} value={cart}/>
                         </div>
                     </div>
                 </div>
 
-                <button className='add-product-button'>Add Product</button>
+                <button className='add-product-button' onClick={addCart}>Add Product</button>
 
 
             </div>

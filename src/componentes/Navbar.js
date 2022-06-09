@@ -5,6 +5,7 @@ import logo from '../assests/images/logo.png'
 import { getCart } from '../store/slices/cart.slices';
 import { useDispatch } from 'react-redux';
 import { Button, Offcanvas } from 'react-bootstrap';
+import CardSidebar from './CardSidebar';
 
 const Navbar = () => {
 
@@ -19,10 +20,19 @@ const Navbar = () => {
     useEffect(() => {
         dispatch(getCart())
     }, [dispatch]);
+
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true); 
+    const handleShow = () => {
+        const token = localStorage.getItem('token')
+        if(token){
+            setShow(true)
+        }else{
+            navigate('/login')
+        }
+        
+    }; 
 
 
 
@@ -40,15 +50,7 @@ const Navbar = () => {
             </ul>
             
         </header>
-        <Offcanvas show={show} onHide={handleClose} placement={"end"}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
-                </Offcanvas.Body>
-            </Offcanvas>
+        <CardSidebar show={show} handleClose={handleClose}/>
         </>
     );
 };

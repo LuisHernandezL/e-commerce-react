@@ -23,4 +23,14 @@ export const getCart = () => (dispatch) => {
         /* .finally(() => dispatch(setIsLoading(false))); */
 }
 
+export const addToCart = (addCart) => (dispatch) => {
+    /* dispatch(setIsLoading(true)); */
+    return axios.post(baseUrl+'/cart',addCart,getConfig())
+        .then(() => {
+            dispatch(getCart());
+            alert("Se Anadio un producto")
+        })
+        .catch(error=>console.log(error.response))
+        /* .finally(() => dispatch(setIsLoading(false))); */
+}
 export default cartSlice.reducer;
