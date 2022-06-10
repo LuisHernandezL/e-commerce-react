@@ -87,7 +87,7 @@ const Home = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <ul>
+      <div className="cards-container">
         {products.map((product) => (
           <li key={product.id} className="product-wrapper">
             <div className="product-container">
@@ -111,7 +111,7 @@ const Home = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

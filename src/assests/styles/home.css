@@ -21,7 +21,6 @@ ul{
     padding: 20px 10px;
     width: 90%;
     margin: 20px auto;
-    background-color: whitesmoke;
 }
 .product-image{
     align-items: center;
@@ -39,3 +38,27 @@ ul{
     object-fit: contain;
     width: 80%;
 }
+
+@media (min-width: 700px) { 
+
+    .cards-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    
+    .products-container{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .product-wrapper{
+        width: 40%;
+    }
+   
+ }

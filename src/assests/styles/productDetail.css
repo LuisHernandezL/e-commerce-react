@@ -5,6 +5,10 @@
     gap: 3rem;
 }
 
+.cards-container {
+    list-style: none;
+}
+
 .product-data {
     display: flex;
     flex-direction: column;
@@ -112,5 +116,24 @@
         justify-content: center;
         gap: 1rem;
     }
+
+    .product-container-principal {
+        display: flex;
+    }
+
+    .product-options {
+        max-width: 40%;
+    }
+
+    .suggestion {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* .product-wrapper {
+        margin: 30px 30px;
+    } */
+
 
  }

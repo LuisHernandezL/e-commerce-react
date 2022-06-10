@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Accordion } from 'react-bootstrap';
 
 const PurchasesComponent = ({ purchases }) => {
+
   const options = { year: "numeric", month: "long", day: "numeric" };
-  const date = new Date(purchases.createdAt).toLocaleDateString(
-    "en-us",
-    options
-  );
+  const date = new Date(purchases.createdAt).toLocaleDateString(undefined, options);
+
   const navigate = useNavigate();
 
   return (

@@ -11,7 +11,7 @@ const ProductDetails = () => {
 
     const [product, setProduct] = useState();
     const [productsFiltered, setProductsFiltered] = useState([]);
-    const[cart,setCart]=useState("")
+    const[cart,setCart]=useState(1)
 
     const sumCart = () => setCart(cart + 1);
     const resCart = () => {
@@ -55,6 +55,7 @@ const ProductDetails = () => {
 
     return (
         <div className='product-detail-container'>
+            <div className='product-container-principal'>
             <Carousel style={{maxWidth:'500px'}} className='mx-auto'>
                 <Carousel.Item >
                     <img
@@ -111,6 +112,8 @@ const ProductDetails = () => {
                 </div>
 
                 <button className='btn btn-primary' style={{width: "100%"}} onClick={addCart}>Add Product</button>
+
+            </div>
 
 
             </div>

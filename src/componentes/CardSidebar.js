@@ -1,12 +1,14 @@
 import React from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../assests/styles/cartSideBar.css'
+import { purchaseCart } from '../store/slices/cart.slices'
 
 const CardSidebar = ({show,handleClose}) => {
     const cartProducts = useSelector(state=>state.cart)
     const navigate = useNavigate();
+    const dispatch = useDispatch()
     
     const selectProduct = (cartProduct)=>{
         handleClose();
@@ -22,6 +24,9 @@ const CardSidebar = ({show,handleClose}) => {
         return total
     }
 
+    const buyCart = () => {
+        dispatch(purchaseCart())
+    }
 
 
     return (
@@ -53,7 +58,7 @@ const CardSidebar = ({show,handleClose}) => {
                             <h3>Total:</h3>
                             <p><b>$</b> {TotalPrice(cartProducts)}</p>
                         </div>
-                        <button className='btn btn-primary'>Purchase</button>
+                        <button className='btn btn-primary' onClick={buyCart}>Purchase</button>
                     </div>
                 </Offcanvas.Body>
             </Offcanvas>
