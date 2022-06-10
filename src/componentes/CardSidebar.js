@@ -3,7 +3,7 @@ import { Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../assests/styles/cartSideBar.css'
-import { purchaseCart } from '../store/slices/cart.slices'
+import { purchaseCart, deleteItem } from '../store/slices/cart.slices'
 
 const CardSidebar = ({show,handleClose}) => {
     const cartProducts = useSelector(state=>state.cart)
@@ -28,6 +28,9 @@ const CardSidebar = ({show,handleClose}) => {
         dispatch(purchaseCart())
     }
 
+    const removeItem = (product) => {
+        dispatch(deleteItem(product))
+    }
 
     return (
         <div>
@@ -46,7 +49,7 @@ const CardSidebar = ({show,handleClose}) => {
                                         <p><b>Quantity:</b> {cartProduct.productsInCart.quantity}</p>
                                     </div>
                                     <div className='cart-product-2'>
-                                        <button><i className="fa-solid fa-trash"></i></button>
+                                        <button onClick={() => removeItem(cartProduct.id)}><i className="fa-solid fa-trash"></i></button>
                                     </div>
                                 </div>
                                 

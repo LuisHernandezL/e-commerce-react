@@ -47,4 +47,11 @@ export const purchaseCart = () => (dispatch) => {
         .catch(error => console.log(error.response))
         .finally(() => dispatch(setIsloading(false)));
 }
+
+export const deleteItem = (productId) => (dispatch) => {
+    dispatch(setIsloading(true));
+    return axios.delete(baseUrl+`/cart/${productId}`,getConfig())
+        .then(() => dispatch(setCart()))
+        .finally(() => dispatch(setIsloading(false)));
+}
 export default cartSlice.reducer;
