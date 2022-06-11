@@ -125,7 +125,7 @@
         max-width: 40%;
     }
 
-    .suggestion {
+    .suggestions {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
